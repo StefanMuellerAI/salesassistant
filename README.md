@@ -1,83 +1,69 @@
 # Sales Assistant
 
-Eine Anwendung zur Generierung personalisierter Verkaufsstrategien mit Hilfe von OpenAI's o3-mini Modell.
+Eine Anwendung zur Analyse von Kundenprofilen und Produkten, um personalisierte Verkaufsstrategien zu generieren.
 
 ## Funktionen
 
-- Auswahl von Kundenprofilen mit detaillierten Informationen
+- Auswahl von Kundenprofilen
 - Auswahl von Produkten/Dienstleistungen
-- Generierung personalisierter Verkaufsstrategien basierend auf Kundenprofil und Produkt
-- Anzeige von Strategietiteln, Ansätzen, Gesprächspunkten und Eröffnungsnachrichten
+- Generierung von personalisierten Verkaufsstrategien mit OpenAI
+- Anzeige von Impressum und Datenschutzerklärung
 
 ## Technologien
 
-- Frontend: React, TypeScript, Tailwind CSS, Vite
+- Frontend: React, TypeScript, Vite, Tailwind CSS
 - Backend: Node.js, Express
-- AI: OpenAI API (o3-mini Modell)
+- KI: OpenAI API
 
-## Einrichtung
+## Lokale Entwicklung
 
-### Voraussetzungen
-
-- Node.js (v14 oder höher)
-- npm oder yarn
-- OpenAI API-Schlüssel
-
-### Installation
-
-1. Klone das Repository:
-   ```
-   git clone <repository-url>
-   cd sales-assistant
-   ```
-
-2. Installiere die Frontend-Abhängigkeiten:
+1. Repository klonen
+2. Abhängigkeiten installieren:
    ```
    npm install
    ```
-
-3. Installiere die Backend-Abhängigkeiten:
+3. `.env`-Datei erstellen (basierend auf `.env.example`) und OpenAI API-Schlüssel eintragen
+4. Backend-Server starten:
    ```
-   cd server
-   npm install
+   node server/server.js
    ```
-
-4. Konfiguriere die Umgebungsvariablen:
-   - Erstelle eine `.env`-Datei im `server`-Verzeichnis
-   - Füge deinen OpenAI API-Schlüssel hinzu:
-     ```
-     PORT=3001
-     OPENAI_API_KEY=your_openai_api_key_here
-     ```
-
-### Starten der Anwendung
-
-1. Starte das Backend:
-   ```
-   cd server
-   npm run dev
-   ```
-
-2. Starte das Frontend (in einem neuen Terminal):
+5. Frontend-Entwicklungsserver starten:
    ```
    npm run dev
    ```
 
-3. Öffne die Anwendung im Browser:
+## Deployment auf Vercel
+
+1. Stelle sicher, dass du ein Vercel-Konto hast und die Vercel CLI installiert ist:
    ```
-   http://localhost:5173
+   npm install -g vercel
    ```
 
-## Verwendung
+2. Führe den Login-Befehl aus:
+   ```
+   vercel login
+   ```
 
-1. Wähle ein Kundenprofil aus der Liste aus
-2. Wähle ein Produkt/eine Dienstleistung aus der Liste aus
-3. Klicke auf "Generate Sales Strategies"
-4. Sieh dir die generierten Strategien an
-5. Verwende die "Regenerate"-Funktion, um neue Strategien zu generieren
+3. Füge deinen OpenAI API-Schlüssel als Umgebungsvariable hinzu:
+   - Gehe zu deinem Vercel-Dashboard
+   - Wähle dein Projekt aus
+   - Gehe zu "Settings" > "Environment Variables"
+   - Füge `OPENAI_API_KEY` mit deinem API-Schlüssel hinzu
 
-## Hinweise
+4. Deploye die Anwendung:
+   ```
+   vercel
+   ```
 
-- Stelle sicher, dass du einen gültigen OpenAI API-Schlüssel hast
-- Die Anwendung verwendet das o3-mini Modell von OpenAI
-- Die Generierung von Strategien kann je nach API-Auslastung einige Sekunden dauern 
+5. Für Produktions-Deployments:
+   ```
+   vercel --prod
+   ```
+
+## Wichtige Dateien
+
+- `src/App.tsx`: Hauptkomponente der Anwendung
+- `server/server.js`: Backend-Server mit OpenAI-Integration
+- `server/impressum.md`: Impressum (wird im Modal angezeigt)
+- `server/datenschutz.md`: Datenschutzerklärung (wird im Modal angezeigt)
+- `vercel.json`: Konfiguration für das Vercel-Deployment 
