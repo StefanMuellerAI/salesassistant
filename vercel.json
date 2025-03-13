@@ -16,15 +16,24 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/server.js"
+      "dest": "/server/server.js"
     },
     {
       "src": "/server/(.*)",
-      "dest": "server/$1"
+      "dest": "/server/$1"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "functions": {
+    "server/server.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
 } 
