@@ -74,8 +74,8 @@ app.post('/api/generate-strategies', async (req, res) => {
 
     // Call OpenAI API with the new responses.create method
     const response = await openai.responses.create({
-      model: "gpt-4.5-preview-2025-02-27",
-      input: [
+      model: "gpt-4.5-preview",
+        input: [
         {
           "role": "system",
           "content": [
